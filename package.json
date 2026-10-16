@@ -1,0 +1,59 @@
+{
+  "name": "sinetron-story",
+  "private": true,
+  "version": "5.1.0",
+  "description": "Kairosoft-style TV-drama (sinetron) studio management sim. Phaser 4 + TypeScript + Vite, installable PWA.",
+  "author": "KodeKecil",
+  "license": "MIT",
+  "homepage": "https://sinetron-story.axolotl1429.workers.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhmns14/sinetron-story.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vhmns14/sinetron-story/issues"
+  },
+  "keywords": [
+    "game",
+    "phaser",
+    "typescript",
+    "vite",
+    "pixel-art",
+    "indonesia",
+    "simulation",
+    "pwa"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build && node tools/csp-headers.mjs dist",
+    "build:single": "tsc --noEmit && vite build --config vite.single.config.ts",
+    "preview": "vite preview",
+    "build:all": "npm run build && npm run build:single",
+    "test:e2e": "node tools/e2e.mjs dist shots",
+    "test:soak": "node tools/soak.mjs 10 casual",
+    "test:v5": "node tools/e2e-v5.mjs dist shots/v5 all",
+    "test:resp": "node tools/shot-resp.mjs dist shots/v5 resp",
+    "balance": "rolldown tools/balance.ts --file .balance.mjs --platform node && node .balance.mjs smart 10",
+    "assets": "python3 tools/assets.py",
+    "shots:v2": "node tools/shots-v2.mjs dist shots",
+    "test:titles": "rolldown tools/titles-sample.ts --file .titles.mjs --platform node && node .titles.mjs 40",
+    "test:audio": "rolldown tools/audio-test.ts --dir .audio-test --platform node && node .audio-test/audio-test.js",
+    "test:audio:browser": "node tools/audio-browser.mjs",
+    "audit:sec": "node tools/sec-check.mjs"
+  },
+  "dependencies": {
+    "@fontsource/baloo-2": "^5.3.0",
+    "@fontsource/pixelify-sans": "^5.3.0",
+    "@fontsource/silkscreen": "^5.3.0",
+    "phaser": "4.2.1"
+  },
+  "devDependencies": {
+    "playwright": "1.56",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vite-plugin-pwa": "^2.0.0",
+    "vite-plugin-singlefile": "^2.3.3"
+  }
+}
